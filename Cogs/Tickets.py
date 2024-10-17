@@ -21,6 +21,7 @@ class Tickets(commands.Cog):
     # add commands to the tree on load
     async def cog_load(self):
         self.bot.command_list.append(self.make_channel_button)
+        self.bot.command_list.append(self.reload_config)
 
     # remove commands from the tree on load
     async def cog_unload(self):
@@ -112,3 +113,8 @@ class Tickets(commands.Cog):
             embed = discord.Embed(color=discord.Color.red(), description=f'Error: {channel_id}')
 
         await interaction.followup.send(embed=embed, ephemeral=True)
+
+    @app_commands.command(name='reload_config', description='Reload the bot config')
+    async def reload_config(interaction):
+        load_config()
+        await interaction.response.send_message('Reloaded config', ephemeral=True)
