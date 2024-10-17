@@ -37,8 +37,10 @@ class Tickets(commands.Cog):
             print('Initializing view failed:', e)
 
     async def create_ticket_channel(self, server, category_id, creator, channel_name):
+        cfg = config[str(server.id)]
         overwrites = {
             server.default_role: discord.PermissionOverwrite(read_messages=False),
+            server.get_role(cfg['sd_role']): discord.PermissionOverwrite(read_messages=True)
         }
         user = await self.bot.fetch_user(creator.id)
         overwrites[user] = discord.PermissionOverwrite(read_messages=True)
