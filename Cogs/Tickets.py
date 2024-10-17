@@ -115,6 +115,6 @@ class Tickets(commands.Cog):
         await interaction.followup.send(embed=embed, ephemeral=True)
 
     @app_commands.command(name='reload_config', description='Reload the bot config')
-    async def reload_config(interaction):
+    async def reload_config(self, interaction: discord.Interaction):
         load_config()
         await interaction.response.send_message('Reloaded config', ephemeral=True)
