@@ -60,6 +60,7 @@ class Tickets(commands.Cog):
         view = ButtonView(timeout=None, callback=self.show_ticket_modal)
         embed = discord.Embed(
             color=discord.Color.blurple(),
+            title='Registration',
             description='Click the button below and enter your SNAP ID to unlock your personal channel and complete your registration on the server. This step is essential as it will grant you access to all other channels.'
         )
         await interaction.channel.send(embed=embed, view=view)
